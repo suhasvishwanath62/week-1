@@ -1,0 +1,59 @@
+Assignment 2:
+
+inventory = {}
+
+def add_item():
+    item_name = input("Enter the item name: ")
+    quantity = int(input("Enter the quantity: "))
+    price = float(input("Enter the price: "))
+    inventory[item_name] = {'quantity': quantity, 'price': price}
+    print(f"{item_name} has been added to the inventory.")
+
+def update_item():
+    item_name = input("Enter the item name to update: ")
+    if item_name in inventory:
+        new_quantity = int(input("Enter the new quantity: "))
+        inventory[item_name]['quantity'] = new_quantity
+        print(f"{item_name}'s quantity has been updated to {new_quantity}.")
+    else:
+        print(f"{item_name} not found in the inventory.")
+
+def view_inventory():
+    if inventory:
+        print("Current Inventory:")
+        for item, info in inventory.items():
+            print(f"{item}: Quantity - {info['quantity']}, Price - ${info['price']:.2f}")
+    else:
+        print("Inventory is empty.")
+
+def remove_item():
+    item_name = input("Enter the item name to remove: ")
+    if item_name in inventory:
+        del inventory[item_name]
+        print(f"{item_name} has been removed from the inventory.")
+    else:
+        print(f"{item_name} not found in the inventory.")
+
+while True:
+    print("\nMenu:")
+    print("1. Add new item to inventory")
+    print("2. Update item quantity")
+    print("3. View current inventory")
+    print("4. Remove item from inventory")
+    print("5. Exit")
+    choice = input("Enter your choice (1/2/3/4/5): ")
+
+    if choice == '1':
+        add_item()
+    elif choice == '2':
+        update_item()
+    elif choice == '3':
+        view_inventory()
+    elif choice == '4':
+        remove_item()
+    elif choice == '5':
+        print("Exiting the inventory management system.")
+        break
+    else:
+        print("Invalid choice. Please enter a valid option (1/2/3/4/5).")
+
